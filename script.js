@@ -24,10 +24,12 @@ function startTyping() {
 
 startTyping();
 
-function toggleNav() {
-  var sidenav = document.querySelector('.sidenav');
+var sidenav = document.querySelector('.sidenav');
   var togBtn = document.querySelector(".toggle-btn");
+
+function toggleNav() {
   if (sidenav.style.width === '0px' || sidenav.style.width === '') {
+    sidenav.style.display = "block"
       sidenav.style.width = '95px';
       togBtn.style.marginLeft = '95px';
   } else {
@@ -36,3 +38,16 @@ function toggleNav() {
   }
 }
 
+window.addEventListener("resize", function() {
+  if (window.innerWidth > 600) {
+    location.reload();
+  }
+});
+
+function hide() {
+  var toggleBtnStyle = window.getComputedStyle(togBtn);
+  if (toggleBtnStyle.display === "block") {
+    sidenav.style.display = "none";
+    togBtn.style.marginLeft = "0px";
+  }
+}
